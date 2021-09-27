@@ -15,30 +15,7 @@
   <link rel="stylesheet" href="<?= base_url('assets/adminlte/css/adminlte.css') ?>" />
   <style>
     body {
-      font-size: 14px;
-    }
-
-    .scroll {
-      max-height: 530px;
-      overflow-y: auto;
-    }
-
-    .blink {
-      animation: blink 1s steps(1, end) infinite;
-    }
-
-    @keyframes blink {
-      0% {
-        opacity: 1;
-      }
-
-      50% {
-        opacity: 0;
-      }
-
-      100% {
-        opacity: 1;
-      }
+      font-size: 12px;
     }
   </style>
 </head>

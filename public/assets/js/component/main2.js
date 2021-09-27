@@ -13,20 +13,10 @@ document.addEventListener("DOMContentLoaded", function () {
     .then((data) => {
       const result = data.data;
       const firstTop = result.slice(0, 10);
-      console.log(firstTop);
       const itemList = document.querySelector("#listPart");
+      //itemList.setAttribute('data-autoscroll','')
       for (res of firstTop) {
-        //console.log(makeSpan('strong',res.oldpartno));
-        // console.log(renderContent(
-        //     res.oldpartno,
-        //     res.partno,
-        //     res.partname,
-        //     res.onhand,
-        //     res.onorder,
-        //     res.allocated,
-        //     res.economicsock
-        //     ));
-        itemList.append(
+        itemList.appendChild(
           renderContent(
             res.oldpartno,
             res.partno,
@@ -70,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //on order
     const spor = makeSpan(
-        qtyOor <= 0 ? "strong text-danger" : "strong text-primary",
+      qtyOor <= 0 ? "strong text-danger" : "strong text-primary",
       new Intl.NumberFormat().format(qtyOor)
     );
     const por = makeP("h6", "On Order : ");
@@ -117,8 +107,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const divAlert = makeDiv("col-md-1", "");
     divAlert.append(spanAlert);
 
-    console.log(divAlert);
-
     //row
     const divRow = makeDiv("row", "");
     divRow.append(divPart, divQ1, divQ2, divAlert);
@@ -164,7 +152,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   var minutes, seconds, count, counter, timer;
-  count = 60; //seconds
+  count = 180; //seconds
   counter = setInterval(timer, 1000);
 
   function timer() {
