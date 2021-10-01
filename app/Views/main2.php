@@ -13,7 +13,7 @@
     } */
 
     .data-list {
-        height: 530px;
+        height: 750px;
         overflow-y: hidden;
 
     }
@@ -62,7 +62,7 @@
 
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-10">
+                <div class="col-lg-11">
                     <div class="card">
                         <div class="card-header border-1">
                             <h3 class="card-title">Inventory Status</h3>
@@ -107,7 +107,7 @@
                     </div>
                     <!-- /.card -->
                 </div>
-                <div class="col-lg-2">
+                <div class="col-lg-1">
                     <div class="card">
                         <!-- <div class="card-header">
                             <h4 class="card-title">Next Refresh in :</h3>
@@ -164,7 +164,7 @@
             return;
         }
         document.getElementById("timer").innerHTML =
-            "Next refresh in " + minutes + ":" + seconds + " ";
+            "Refresh in " + minutes + ":" + seconds + " ";
         if (count === 0) {
             location.reload();
         }
