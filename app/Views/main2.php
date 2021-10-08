@@ -62,7 +62,7 @@
 
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-11">
+                <div class="col-lg-10">
                     <div class="card">
                         <div class="card-header border-1">
                             <h3 class="card-title">Inventory Status</h3>
@@ -107,7 +107,7 @@
                     </div>
                     <!-- /.card -->
                 </div>
-                <div class="col-lg-1">
+                <div class="col-lg-2">
                     <div class="card">
                         <!-- <div class="card-header">
                             <h4 class="card-title">Next Refresh in :</h3>
@@ -115,6 +115,29 @@
                         <div class="card-body text-center text-primary h3">
                             <span id="timer"></span>
 
+                        </div>
+                    </div>
+                    <br />
+                    <div class="card card-primary card-outline">
+                        <div class="card-header">
+                            <h2 class="text-primary">Item Inventory</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-hover" id="tableInventory">
+                                    <thead>
+                                        <tr>
+                                            <th>Series</th>
+                                            <th>First Free Number</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <div class="overlay" id="olTable"><i class="fas fa-3x fa-sync-alt fa-spin"> </i>
+                                            <div class="text-bold pt-2"> Loading...</div>
+                                        </div>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -169,6 +192,57 @@
             location.reload();
         }
     }
+
+    fetch(`http://10.1.10.101/api-display/public/get-series/`, {
+            mode: "no-cors",
+        })
+        .then((response) => {
+            if (response.ok) {
+                return Promise.resolve(response);
+            } else {
+                return Promise.reject(new Error("Failed to load"));
+            }
+        })
+        .then((response) => response.json()) // parse response as JSON
+        .then((data) => {
+            const result = data.data;
+            //console.log(result);
+            $("#tableSeries").DataTable({
+                dom: "Bfrtip",
+                //buttons: ["copy", "csv", "excel", "pdf", "print"],
+                responsive: true,
+                autoWidth: false,
+                data: result,
+                columnDefs: [{
+                    targets: [1],
+                    render: function(data, type, row, meta) {
+                        if (type === "display") {
+                            data = new Intl.NumberFormat().format(data);
+                        }
+                        return data;
+                    },
+                }, ],
+                columns: [{
+                        data: "t_dsca",
+                    },
+                    {
+                        data: "t_ffno",
+                    }
+                ],
+                order: [
+                    [1, "desc"],
+                ],
+            });
+        })
+        .catch(function(error) {
+            console.log(`Error: ${error.message}`);
+            //alert(`Error: ${error.message}`);
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: `${error.message}. Please contact administrator!!`,
+            });
+        });
 </script>
 
 <?= $this->endSection() ?>
