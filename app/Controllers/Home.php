@@ -6,7 +6,7 @@ class Home extends BaseController
 {
 	public function index()
 	{
-		$getData = file_get_contents("http://localhost/slim-rest/public/stockbypart/?group=FG");
+		$getData = file_get_contents("http://10.1.10.101/api-display/public/stockbypart/?group=FG");
 		$top10 = array_slice(json_decode($getData)->data,0,15);
 		$data['fg'] = $top10;
 

@@ -1,1 +1,1 @@
-const api_url = "https://localhost/slim-rest/public";
+const api_url = "https://10.1.10.101/api-display/public";
