@@ -46,6 +46,6 @@ class Sales extends BaseController
 
     public function shipment_report()
     {
-        return "hallo, shipment report";
+        return view('report/shipment');
     }
 }

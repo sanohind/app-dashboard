@@ -118,13 +118,13 @@
                         </div>
                     </div>
                     <br />
-                    <div class="card card-primary card-outline">
+                    <div class="card card-success card-outline">
                         <div class="card-header">
-                            <h2 class="text-primary">Item Inventory</h2>
+                            <h2 class="text-success">Series No.</h2>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-striped table-hover" id="tableInventory">
+                                <table class="table table-striped table-hover" id="tableSeries">
                                     <thead>
                                         <tr>
                                             <th>Series</th>
@@ -132,9 +132,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <div class="overlay" id="olTable"><i class="fas fa-3x fa-sync-alt fa-spin"> </i>
-                                            <div class="text-bold pt-2"> Loading...</div>
-                                        </div>
+                                        
                                     </tbody>
                                 </table>
                             </div>
@@ -193,7 +191,7 @@
         }
     }
 
-    fetch(`http://10.1.10.101/api-display/public/get-series/`, {
+    fetch(`https://localhost/slim-rest/public/get-series/`, {
             mode: "no-cors",
         })
         .then((response) => {
@@ -206,12 +204,8 @@
         .then((response) => response.json()) // parse response as JSON
         .then((data) => {
             const result = data.data;
-            //console.log(result);
+            console.log(result);
             $("#tableSeries").DataTable({
-                dom: "Bfrtip",
-                //buttons: ["copy", "csv", "excel", "pdf", "print"],
-                responsive: true,
-                autoWidth: false,
                 data: result,
                 columnDefs: [{
                     targets: [1],
@@ -232,6 +226,9 @@
                 order: [
                     [1, "desc"],
                 ],
+                "paging": false,
+                "searching": false
+
             });
         })
         .catch(function(error) {
