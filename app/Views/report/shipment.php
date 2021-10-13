@@ -105,7 +105,7 @@
 <?= $this->section('jscustom') ?>
 <!-- sweet alert 2-->
 <script src="<?= base_url('assets/adminlte/plugin/sweetalert2/sweetalert2.min.js') ?>"></script>
-<script src="<?= base_url('assets/adminlte/plugin/chartjs/dist/chart.min.js') ?>"></script>
+<script src="<?= base_url('assets/adminlte/plugin/chartjs/dist1/chart.min.js') ?>"></script>
 <!-- component -->
 <script>
     renderChart();
