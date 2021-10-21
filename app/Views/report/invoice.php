@@ -25,12 +25,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Shipment Chart</h1>
+                    <h1>Sales Amount Chart</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Blank Page</li>
+                        <li class="breadcrumb-item active">Sales Report</li>
                     </ol>
                 </div>
             </div>
@@ -40,67 +40,29 @@
     <!-- Main content -->
     <section class="content">
         <!-- Default box -->
-        <div class="card">
-            <div class="card-body">
-                <h3 class="card-title">Filter by :</h3>
-                <br />
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label>Date Receipt From:</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">
-                                        <i class="far fa-calendar-alt"></i>
-                                    </span>
-                                </div>
-                                <input type="date" class="form-control float-right" id="rcDateFrom">
-                            </div>
-                            <!-- /.input group -->
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <label>To:</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">
-                                        <i class="far fa-calendar-alt"></i>
-                                    </span>
-                                </div>
-                                <input type="date" class="form-control float-right" id="rcDateTo">
-                            </div>
-                            <!-- /.input group -->
-                        </div>
-                    </div>
-                    <div class="col-md-2 ">
-                        <div class="form-group mt-3">
-                            <button class="btn btn-primary" id="btnFilter"><i class="fas fa-search"> </i> Display</button>
-                        </div>
-
-                    </div>
-
-                </div>
-                <br />
-
-            </div>
-            <!-- /.card-body -->
-        </div>
-        <!-- /.card -->
         <div class="row">
             <div class="col-md-12">
                 <div class="card card-outline card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">Monthly Sales Amount</h3>
+                        <div class="card-tools">
+                            <a href="<?= site_url('/sales-detail-report') ?>" class="btn btn-tool btn-sm text-primary"> Details
+                                <i class="fas fa-sign-out-alt"></i>
+                            </a>
+                        </div>
+                    </div>
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-10" id="displayChart">
-                                <canvas id="myChart" height="160px"></canvas>
+                            <div class="col-md-9" id="displayChart">
+                                <canvas id="myChart" height="135px"></canvas>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 <table id="tbChart" class="table table-striped">
                                     <thead>
                                         <tr>
-                                            <td>Tanggal</td>
-                                            <td>Qty</td>
+                                            <td>ID</td>
+                                            <td>Month</td>
+                                            <td>Amount</td>
                                         </tr>
                                     </thead>
                                 </table>
@@ -136,21 +98,9 @@
 <script>
     renderChart();
 
-    $('#btnFilter').click(function() {
-        const dtFrom = document.getElementById('rcDateFrom').value;
-        const dtTo = document.getElementById('rcDateTo').value;
-        const divChart = document.getElementById('displayChart');
-        divChart.removeChild(document.getElementById('myChart'));
-        const chartELement = document.createElement('canvas');
-        chartELement.setAttribute('id', 'myChart');
-        chartELement.setAttribute('height', '160px');
-        divChart.append(chartELement);
-        $("#tbChart").DataTable().destroy();
-        renderChart(dtFrom, dtTo);
-    });
 
     function renderChart(datefrom = '', dateto = '') {
-        fetch(`${api_url}/shipment-daily/?datefrom=${datefrom}&dateto=${dateto}`, {
+        fetch(`${api_url}/get-sales-monthly/`, {
                 mode: "no-cors"
             })
             .then(response => {
@@ -168,11 +118,11 @@
                     const label = [];
                     const data = [];
                     for (res of result) {
-                        label.push(res.date);
-                        data.push(res.total_qty);
+                        label.push(res.month2);
+                        data.push(res.total_amount);
                     }
                     //console.log(label);
-                    drawChart('Shipment Chart', label, data);
+                    drawChart('Sales Amount - FY2021', label, data);
                     drawTbChart(result);
                 } else {
                     document.getElementById('overlay').style.display = "none";
@@ -224,28 +174,34 @@
             //dom: "Bfrtip",
             responsive: true,
             autoWidth: false,
-            "searching" : false,
+            "searching": false,
+            "paging": false,
             data: data,
             columnDefs: [{
-                    targets: [1],
-                    render: function(data, type, row, meta) {
-                        if (type === "display") {
-                            data = new Intl.NumberFormat().format(data);
-                        }
-                        return data;
-                    },
+                targets: [2],
+                render: function(data, type, row, meta) {
+                    if (type === "display") {
+                        data = new Intl.NumberFormat('id-ID', {
+                            style: 'currency',
+                            currency: 'IDR'
+                        }).format(data);
+                    }
+                    return data;
                 },
-            ],
+            }, ],
             columns: [{
-                    data: "date",
+                    data: "month",
                 },
                 {
-                    data: "total_qty",
+                    data: "month2",
                 },
-                
+                {
+                    data: "total_amount",
+                },
+
             ],
             order: [
-                [0, "asc"],
+                [0, "asc"]
             ],
         });
     }

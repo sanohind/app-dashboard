@@ -41,11 +41,16 @@ class Sales extends BaseController
 
     public function invoice_report()
     {
-        return "hallo, invoice report";
+        return view('report/invoice');
     }
 
     public function shipment_report()
     {
         return view('report/shipment');
+    }
+
+    public function invoice_detail_report()
+    {
+        return view('report/invoice-detail');
     }
 }

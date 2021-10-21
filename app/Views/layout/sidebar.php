@@ -93,9 +93,9 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?= site_url('invoice-report');?>" class="nav-link">
+                <a href="<?= site_url('sales-report');?>" class="nav-link">
                   <i class="far fa-circle nav-icon text-primary"></i>
-                  <p>Invoice Report</p>
+                  <p>Sales Report</p>
                 </a>
               </li>
               <li class="nav-item">

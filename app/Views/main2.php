@@ -191,7 +191,7 @@
         }
     }
 
-    fetch(`https://localhost/slim-rest/public/get-series/`, {
+    fetch(`http://10.1.10.101/api-display/public/get-series/`, {
             mode: "no-cors",
         })
         .then((response) => {
