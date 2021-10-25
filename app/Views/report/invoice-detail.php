@@ -79,11 +79,12 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- /.card-body -->
-                    <div class="card-footer">
                         <button class="btn btn-info" id="btnFilter"><i class="fas fa-search"> </i> Filter</button>
                     </div>
+                    <!-- /.card-body -->
+                    <!-- <div class="card-footer">
+                        <button class="btn btn-info" id="btnFilter"><i class="fas fa-search"> </i> Filter</button>
+                    </div> -->
                     <!-- /.card-footer -->
                     <!-- </form> -->
                 </div>
@@ -95,6 +96,13 @@
                     </div>
                 </div>
             </div>
+            <!-- <div class="col-md-2">
+                <div class="card card-success">
+                    <div class="card-body" id="displayChart">
+                        <canvas id="myChartPie" height="63px"></canvas>
+                    </div>
+                </div>
+            </div> -->
             <div class="col-md-12">
                 <div class="card card-outline card-primary">
                     <div class="card-header">
@@ -104,6 +112,7 @@
                         <div class="table-responsive">
                             <table id="tbSales" class="table table-striped">
                                 <thead>
+
                                     <tr>
                                         <td>Trans</td>
                                         <td>Invoice No.</td>
@@ -119,6 +128,7 @@
                                         <td>Unit Price</td>
                                         <td>Amount</td>
                                         <td>Amount (IDR)</td>
+                                        <td>Tax (IDR)</td>
                                     </tr>
                                 </thead>
                                 <tbody></tbody>
@@ -252,7 +262,7 @@
             dom: "Bfrtip",
             buttons: ["copy", "csv", "excel"],
             responsive: true,
-            autoWidth: false,
+            autoWidth: true,
             data: data,
             columnDefs: [{
                     targets: [10, 11, 12],
@@ -264,7 +274,7 @@
                     },
                 },
                 {
-                    targets: [13],
+                    targets: [13,14],
                     render: function(data, type, row, meta) {
                         if (type === "display") {
                             data = new Intl.NumberFormat('id-ID', {
@@ -317,6 +327,9 @@
                 },
                 {
                     data: "amount_base",
+                },
+                {
+                    data: "tax_base",
                 },
 
             ],

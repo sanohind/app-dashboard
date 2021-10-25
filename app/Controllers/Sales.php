@@ -53,4 +53,17 @@ class Sales extends BaseController
     {
         return view('report/invoice-detail');
     }
+
+    public function planned_load( $wh = null )
+    {
+        //$warehouse = $wh;
+
+        $warehouse = $wh != '' ? $wh : '';
+
+        $getData = file_get_contents("http://10.1.10.101/api-display/public/get-planned-load/?warehouse=$warehouse");
+        $plData = json_decode($getData);
+        $data['plannedload'] = $plData->data;
+        $data['wh'] = $warehouse;
+        return view('report/planned-load',$data);
+    }
 }

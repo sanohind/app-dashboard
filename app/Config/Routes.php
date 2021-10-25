@@ -39,10 +39,13 @@ $routes->get('/sales-detail-report', 'Sales::invoice_detail_report');
 $routes->get('/invoice-print', 'Sales::invoice');
 $routes->get('/shipment-report', 'Sales::shipment_report');
 $routes->get('/invoice-set/(:alpha)/(:num)', 'Sales::set_invoice/$1/$2');
+$routes->get('/planned-load', 'Sales::planned_load');
+$routes->get('/planned-load/(:any)', 'Sales::planned_load/$1');
 $routes->get('/inventory/(:alpha)', 'Inventory::stockbypart/$1');
 $routes->get('/inventory/(:alpha)/lot', 'Inventory::lotdetail/$1');
 $routes->get('/warehouse/(:alpha)', 'Inventory::stockbywarehouse/$1');
 $routes->get('/inventory', 'Inventory::index');
+
 
 //post
 $routes->post('/invoice-print', 'Sales::print_invoice');

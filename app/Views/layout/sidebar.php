@@ -104,6 +104,12 @@
                   <p>Receipt Report</p>
                 </a>
               </li>
+              <li class="nav-item">
+                <a href="<?= site_url('planned-load');?>" class="nav-link">
+                  <i class="far fa-circle nav-icon text-primary"></i>
+                  <p>Planned Load</p>
+                </a>
+              </li>
             </ul>
           </li>
           
