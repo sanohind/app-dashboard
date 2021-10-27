@@ -67,15 +67,15 @@
                             <div class="col-sm-2">
                                 <select class="form-control" id="stoMonth">
                                     <option value="">-- Choose --</option>
-                                    <option value="1">January</option>
-                                    <option value="2">February</option>
-                                    <option value="3">March</option>
-                                    <option value="4">April</option>
-                                    <option value="5">May</option>
-                                    <option value="6">June</option>
-                                    <option value="7">July</option>
-                                    <option value="8">August</option>
-                                    <option value="9">September</option>
+                                    <option value="01">January</option>
+                                    <option value="02">February</option>
+                                    <option value="03">March</option>
+                                    <option value="04">April</option>
+                                    <option value="05">May</option>
+                                    <option value="06">June</option>
+                                    <option value="07">July</option>
+                                    <option value="08">August</option>
+                                    <option value="09">September</option>
                                     <option value="10">October</option>
                                     <option value="11">November</option>
                                     <option value="12">December</option>
@@ -190,8 +190,10 @@
                 //const resSummary = data.summary;
                 const resData = data.data;
                 if (Object.keys(resData).length > 0) {
-                    console.log(resData);
-                    drawTbChart(resData);
+                    //console.log(resData);
+                    const file = `${year+''+month}_${warehouse}_STO_Template`;
+                    console.log(file);
+                    drawTbChart(resData,file);
                     const overlay = document.getElementById('overlay');
                     overlay.setAttribute('style', 'display : none');
                 } else {
@@ -215,23 +217,19 @@
             });
     }
 
-    function drawTbChart(data) {
+    function drawTbChart(data,file) {
         //console.log(data)
         $("#tbSto").DataTable({
             dom: "Bfrtip",
-            buttons: ["copy", "csv", "excel"],
+            //buttons: ["copy", "csv", "excel"],
             responsive: true,
             autoWidth: true,
             data: data,
-            columnDefs: [{
-                targets: [6],
-                render: function(data, type, row, meta) {
-                    if (type === "display") {
-                        data = new Intl.NumberFormat().format(data);
-                    }
-                    return data;
+            buttons: [{
+                    extend: 'excelHtml5',
+                    title: file
                 },
-            }, ],
+            ],
             columns: [{
                     data: "sto_date",
                 },
