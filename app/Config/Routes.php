@@ -45,6 +45,7 @@ $routes->get('/inventory/(:alpha)', 'Inventory::stockbypart/$1');
 $routes->get('/inventory/(:alpha)/lot', 'Inventory::lotdetail/$1');
 $routes->get('/warehouse/(:alpha)', 'Inventory::stockbywarehouse/$1');
 $routes->get('/inventory', 'Inventory::index');
+$routes->get('/stock-opname', 'Accounting::stock_opname');
 
 
 //post

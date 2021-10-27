@@ -54,9 +54,9 @@
           <li class="nav-header">TRANSACTION</li>
           <li class="nav-item">
             <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-search text-primary"></i>
+              <i class="nav-icon fas fa-shopping-cart text-primary"></i>
               <p>
-                Invoice
+                Sales
                 <i class="fas fa-angle-left right text-primary"></i>
               </p>
             </a>
@@ -65,6 +65,29 @@
                 <a href="<?= site_url('invoice-print');?>" class="nav-link">
                   <i class="far fa-circle nav-icon text-primary"></i>
                   <p>Print Invoice Export</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">
+                  <i class="far fa-circle nav-icon text-primary"></i>
+                  <p> -- / --</p>
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link">
+              <i class="nav-icon fas fa-balance-scale text-primary"></i>
+              <p>
+                Accounting
+                <i class="fas fa-angle-left right text-primary"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="<?= site_url('stock-opname');?>" class="nav-link">
+                  <i class="fas fa-circle nav-icon text-primary"></i>
+                  <p>Stock Opname</p>
                 </a>
               </li>
               <li class="nav-item">
