@@ -13,7 +13,7 @@ class Accounting extends BaseController
 
 	public function stock_opname()
 	{
-		$getData = file_get_contents("http://localhost/slim-rest/public/get-wh-sto/");
+		$getData = file_get_contents("http://10.1.10.101/api-display/public/get-wh-sto/");
         $whData = json_decode($getData);
         $data['warehouse'] = $whData->data;
 		return view ('transaction/sto', $data);
