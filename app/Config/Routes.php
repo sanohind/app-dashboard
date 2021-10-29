@@ -46,10 +46,13 @@ $routes->get('/inventory/(:alpha)/lot', 'Inventory::lotdetail/$1');
 $routes->get('/warehouse/(:alpha)', 'Inventory::stockbywarehouse/$1');
 $routes->get('/inventory', 'Inventory::index');
 $routes->get('/stock-opname', 'Accounting::stock_opname');
-
+$routes->get('/stock-scan', 'Warehouse::stock_scan');
+$routes->get('/data-scan/(:any)', 'Warehouse::getdatascan/$1');
+$routes->get('/data-scan/(:any)/(:any)', 'Warehouse::getdatascan/$1/$2');
 
 //post
 $routes->post('/invoice-print', 'Sales::print_invoice');
+$routes->post('/scan-proses','Warehouse::scanproses');
 
 
 /*

@@ -29,14 +29,30 @@ class Sales extends BaseController
 
     public function print_invoice()
     {
-        $data = $this->request->getPost();
-        print_r($data);
-        echo "<br/>";
-        print_r($data['invLine']);
-        echo "<br/>";
-        print_r($data['boxQty']);
-        echo "<br/>";
-        print_r($data['box']);
+        $dataPost = $this->request->getPost();
+        // print_r($dataPost);
+        // // echo "<br/>";
+        // // print_r($data['invLine']);
+        // // echo "<br/>";
+        // // print_r($data['boxQty']);
+        // // echo "<br/>";
+        // // print_r($data['box']);
+        // // echo "<br/>";
+        // // print_r($data['box']);
+        // echo "<br/>";
+        // print_r($dataPost['invNo']);
+
+        $trans = substr($dataPost['invNo'],0,3) ;
+        $invoice = substr($dataPost['invNo'],3) ;
+        // echo "<br/>";
+        // print_r($invoice);
+
+        $getInv = file_get_contents("http://10.1.10.101/api-display/public/invoice/?type=$trans&invoice=$invoice");
+        $invData = json_decode($getInv);
+        $data['invoice'] = $invData->data;
+        $data['invDetail'] = file_get_contents("http://10.1.10.101/api-display/public/invoice-detail/?type=$trans&invoice=$invoice");
+        $data['shipment'] = $dataPost;
+        return view('transaction/invoice-print', $data);
     }
 
     public function invoice_report()
