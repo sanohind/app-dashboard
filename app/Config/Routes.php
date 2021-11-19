@@ -32,7 +32,8 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/', 'Home::index');
+$routes->get('/board', 'Home::index');
+$routes->get('/board/(:any)', 'Home::index/$1');
 $routes->get('/receipt-report', 'Purchase::receipt');
 $routes->get('/sales-report', 'Sales::invoice_report');
 $routes->get('/sales-detail-report', 'Sales::invoice_detail_report');
@@ -45,6 +46,7 @@ $routes->get('/inventory/(:alpha)', 'Inventory::stockbypart/$1');
 $routes->get('/inventory/(:alpha)/lot', 'Inventory::lotdetail/$1');
 $routes->get('/warehouse/(:alpha)', 'Inventory::stockbywarehouse/$1');
 $routes->get('/inventory', 'Inventory::index');
+$routes->get('/(:any)/inventory', 'Inventory::index/$1');
 $routes->get('/stock-opname', 'Accounting::stock_opname');
 $routes->get('/stock-scan', 'Warehouse::stock_scan');
 $routes->get('/data-scan/(:any)', 'Warehouse::getdatascan/$1');

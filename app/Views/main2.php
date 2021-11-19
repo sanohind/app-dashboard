@@ -67,7 +67,7 @@
                         <div class="card-header border-1">
                             <h3 class="card-title">Inventory Status</h3>
                             <div class="card-tools">
-                                <a href="<?= site_url('/inventory') ?>" class="btn btn-tool btn-sm text-success"> Details
+                                <a href="<?= site_url("$gp/inventory/") ?>" class="btn btn-tool btn-sm text-success"> Details
                                     <i class="fas fa-sign-out-alt"></i>
                                 </a>
                             </div>

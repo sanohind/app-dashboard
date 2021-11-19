@@ -54,7 +54,7 @@ use PhpParser\Node\Expr\AssignOp\Concat;
             <div class="col-lg-6 col-md-12">
                 <div class="card card-outline card-info">
                     <div class="card-header">
-                        <h2 class="card-title">Open</h2>
+                        <h2 class="card-title">Planned Load</h2>
                     </div>
                     <div class="card-body data-list" data-autoscroll>
                         <?php
@@ -96,7 +96,7 @@ use PhpParser\Node\Expr\AssignOp\Concat;
             <div class="col-lg-6 col-md-12">
                 <div class="card card-outline card-success">
                     <div class="card-header">
-                        <h2 class="card-title">Confirmed</h2>
+                        <h2 class="card-title">Shipment</h2>
                     </div>
 
                     <div class="card-body data-list" data-autoscroll>

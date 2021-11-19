@@ -6,8 +6,13 @@ use App\Controllers\BaseController;
 
 class Inventory extends BaseController
 {
-	public function index()
+	public function index($group = null)
 	{
-		return view('inventory/main');
+		if ($group == null) {
+			$data['gp'] = 'FG';
+		} else {
+			$data['gp'] = $group;
+		}
+		return view('inventory/main', $data);
 	}
 }

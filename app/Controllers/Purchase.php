@@ -13,4 +13,5 @@ class Purchase extends BaseController
     {
         return view('report/receipt');
     }
+
 }
