@@ -51,6 +51,7 @@ $routes->get('/stock-opname', 'Accounting::stock_opname');
 $routes->get('/stock-scan', 'Warehouse::stock_scan');
 $routes->get('/data-scan/(:any)', 'Warehouse::getdatascan/$1');
 $routes->get('/data-scan/(:any)/(:any)', 'Warehouse::getdatascan/$1/$2');
+$routes->get('/auth', 'Auth::index');
 
 //post
 $routes->post('/invoice-print', 'Sales::print_invoice');

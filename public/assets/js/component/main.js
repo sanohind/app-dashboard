@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const gp = document.getElementById('gp').innerText;
+  const gp = document.getElementById('gp').innerHTML;
   console.log(gp);
   fetch(`${api_url}/stockbypart/?group=${gp}`, {
     mode: "no-cors",
