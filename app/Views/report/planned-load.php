@@ -51,7 +51,7 @@ use PhpParser\Node\Expr\AssignOp\Concat;
     <section class="content">
         <!-- Default box -->
         <div class="row">
-            <div class="col-lg-6 col-md-12">
+            <div class="col-lg-4 col-md-12">
                 <div class="card card-outline card-info">
                     <div class="card-header">
                         <h2 class="card-title">Planned Load</h2>
@@ -93,17 +93,52 @@ use PhpParser\Node\Expr\AssignOp\Concat;
                     </div>
                 </div>
             </div> -->
-            <div class="col-lg-6 col-md-12">
-                <div class="card card-outline card-success">
+            <div class="col-lg-4 col-md-12">
+                <div class="card card-outline card-primary">
                     <div class="card-header">
-                        <h2 class="card-title">Shipment</h2>
+                        <h2 class="card-title">Shipment - Open Status</h2>
                     </div>
 
                     <div class="card-body data-list" data-autoscroll>
                         <?php
                         $n = 1;
-                        foreach ($plannedload as $pl) :
-                            if ($pl->status == 5) :
+                        foreach ($shipment as $shp) :
+                            if ($shp->status == 'Open'  ) :
+                        ?>
+                                <ul class="products-list product-list-in-card pl-2 pr-2">
+                                    <li class="item">
+                                        <div class="product-img text-center">
+                                            <i class="h4 text-primary"><?= $n; ?></i>
+                                        </div>
+                                        <div class="product-info">
+                                            <a href="javascript:void(0)" class="product-title text-primary"><?= $shp->shipment . " / " .$shp->load . " / " . $shp->planned_delv_date ?>
+                                                <span class="badge badge-primary float-right"><?= $shp->status ?></span></a>
+                                            <span class="product-description">
+                                                <?= $shp->bp_name ?>
+                                            </span>
+                                        </div>
+                                    </li>
+                                </ul>
+                        <?php
+                                $n++;
+                            endif;
+                        endforeach;
+                        ?>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12">
+                <div class="card card-outline card-success">
+                    <div class="card-header">
+                        <h2 class="card-title">Shipment - Confirm Status ( <?= date('Y-m-d')?> )</h2>
+                    </div>
+
+                    <div class="card-body data-list" data-autoscroll>
+                        <?php
+                        $n = 1;
+                        foreach ($shipment as $shp) :
+                            if ($shp->confirm_date == date('Y-m-d')  ) :
                         ?>
                                 <ul class="products-list product-list-in-card pl-2 pr-2">
                                     <li class="item">
@@ -111,10 +146,10 @@ use PhpParser\Node\Expr\AssignOp\Concat;
                                             <i class="h4 text-success"><?= $n; ?></i>
                                         </div>
                                         <div class="product-info">
-                                            <a href="javascript:void(0)" class="product-title text-success"><?= $pl->so_no . " / " . $pl->ship . " / " . $pl->load . " / " . $pl->load_date ?>
-                                                <span class="badge badge-success float-right">Confirmed</span></a>
+                                            <a href="javascript:void(0)" class="product-title text-success"><?= $shp->shipment . " / " .$shp->load . " / " . $shp->planned_delv_date ?>
+                                                <span class="badge badge-success float-right"><?= $shp->status ?></span></a>
                                             <span class="product-description">
-                                                <?= $pl->bp_name ?>
+                                                <?= $shp->bp_name ?>
                                             </span>
                                         </div>
                                     </li>

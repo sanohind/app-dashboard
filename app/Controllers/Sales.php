@@ -80,6 +80,12 @@ class Sales extends BaseController
         $plData = json_decode($getData);
         $data['plannedload'] = $plData->data;
         $data['wh'] = $warehouse;
+
+        $from = date('Y-m-d', strtotime('-1 month', strtotime(date('Y-m-d'))));
+        $to = date('Y-m-d', strtotime('+1 day', strtotime(date('Y-m-d'))));
+        $getData2 = file_get_contents("http://10.1.10.101/api-display/public/shipment-data/?datefrom=$from&dateto=$to");
+        $shp = json_decode($getData2);
+        $data['shipment'] = $shp->data;
         return view('report/planned-load',$data);
     }
 }
