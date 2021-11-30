@@ -54,7 +54,7 @@
                     <!-- <form class="form-horizontal"> -->
                     <div class="card-body">
                         <div class="form-group row">
-                            <label for="stoYear" class="col-sm-1 col-form-label text-right">Year</label>
+                            <!-- <label for="stoYear" class="col-sm-1 col-form-label text-right">Year</label>
                             <div class="col-sm-2">
                                 <select class="form-control" id="stoYear">
                                     <option value="">-- Choose --</option>
@@ -80,7 +80,7 @@
                                     <option value="11">November</option>
                                     <option value="12">December</option>
                                 </select>
-                            </div>
+                            </div> -->
 
                             <label for="stoWarehouse" class="col-sm-1 col-form-label text-right">Warehouse</label>
                             <div class="col-sm-3">
@@ -114,13 +114,12 @@
                             <table id="tbSto" class="table table-striped">
                                 <thead>
                                     <tr>
-                                        <td>STO Date</td>
                                         <td>Warehouse</td>
                                         <td>Part No</td>
                                         <td>Std. Old Part</td>
                                         <td>Description</td>
                                         <td>Unit</td>
-                                        <td>STO Qty</td>
+                                        <td>Quantity</td>
                                         <td>Actual</td>
                                         <td>Variance</td>
                                         <td>Remark</td>
@@ -168,14 +167,14 @@
         const overlay = document.getElementById('overlay');
         overlay.setAttribute('style', 'display : block');
         $("#tbSto").DataTable().destroy();
-        const year = document.getElementById('stoYear').value;
-        const month = document.getElementById('stoMonth').value;
+       // const year = document.getElementById('stoYear').value;
+        //const month = document.getElementById('stoMonth').value;
         const wh = document.getElementById('stoWarehouse').value;
-        renderChart(year, month, wh);
+        renderChart(wh);
     });
 
-    function renderChart(year, month, warehouse) {
-        fetch(`${api_url}/get-sto/?year=${year}&month=${month}&warehouse=${warehouse}`, {
+    function renderChart(warehouse) {
+        fetch(`${api_url}/stockpartwh/?wh=${warehouse}`, {
                 mode: "no-cors"
             })
             .then(response => {
@@ -191,7 +190,7 @@
                 const resData = data.data;
                 if (Object.keys(resData).length > 0) {
                     //console.log(resData);
-                    const file = `${year+''+month}_${warehouse}_STO_Template`;
+                    const file = `${warehouse}_STO_Template`;
                     console.log(file);
                     drawTbChart(resData,file);
                     const overlay = document.getElementById('overlay');
@@ -231,34 +230,31 @@
                 },
             ],
             columns: [{
-                    data: "sto_date",
-                },
-                {
                     data: "warehouse",
                 },
                 {
-                    data: "item",
+                    data: "partno",
                 },
                 {
-                    data: "old_partno",
+                    data: "oldpartno",
                 },
                 {
-                    data: "description",
+                    data: "partname",
                 },
                 {
                     data: "unit",
                 },
                 {
-                    data: "sto_qty",
+                    data: "onhand",
                 },
                 {
-                    data: "actual",
+                    data: "rem",
                 },
                 {
-                    data: "variance",
+                    data: "rem",
                 },
                 {
-                    data: "remark",
+                    data: "rem",
                 },
 
             ],
