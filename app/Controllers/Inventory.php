@@ -15,4 +15,10 @@ class Inventory extends BaseController
 		}
 		return view('inventory/main', $data);
 	}
+
+	public function stockbywh($wh)
+	{
+		$data['wh'] = $wh;
+		return view('inventory/invwh', $data);
+	}
 }

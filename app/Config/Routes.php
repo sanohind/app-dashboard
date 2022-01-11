@@ -44,7 +44,7 @@ $routes->get('/planned-load', 'Sales::planned_load');
 $routes->get('/planned-load/(:any)', 'Sales::planned_load/$1');
 $routes->get('/inventory/(:alpha)', 'Inventory::stockbypart/$1');
 $routes->get('/inventory/(:alpha)/lot', 'Inventory::lotdetail/$1');
-$routes->get('/warehouse/(:alpha)', 'Inventory::stockbywarehouse/$1');
+$routes->get('/warehouse/(:segment)', 'Inventory::stockbywh/$1');
 $routes->get('/inventory', 'Inventory::index');
 $routes->get('/(:any)/inventory', 'Inventory::index/$1');
 $routes->get('/stock-opname', 'Accounting::stock_opname');
