@@ -73,12 +73,12 @@
                                     <tr class="bg-secondary">
                                         <th width="5%">Shipment</th>
                                         <th width="3%">Status</th>
-                                        <th width="10%">Plan Delivery Date</th>
-                                        <th width="8%">Plan Receipt Date</th>
+                                        <th width="13%">Plan Delivery Date</th>
+                                        <th width="12%">Plan Receipt Date</th>
                                         <th width="20%">Customer</th>
-                                        <th width="12%">Reference</th>
-                                        <th width="12%">Customer Order</th>
-                                        <th width="10%">Total Qty</th>
+                                        <th width="15%">Reference</th>
+                                        <th width="15%">Customer Order</th>
+                                        
                                         <th width="8%">Lead Time (days)</th>
                                         <th></th>
                                     </tr>
@@ -102,7 +102,7 @@
                                             <td><?= $shp->bp_name ?></td>
                                             <td><?= $shp->shpm_ref ?></td>
                                             <td><?= $shp->cst_order ?></td>
-                                            <td><?= $shp->total_qty . " " . $shp->unit ?></td>
+                                            
                                             <td><?= $dif->format('%a'); ?></td>
                                             <td>
                                                 <?php
@@ -163,10 +163,9 @@
             extend: 'excelHtml5',
         }],
         order: [
-            [8, "desc"]
+            [7, "desc"]
         ],
         "pageLength": 25,
-        "scrollY": 550,
 
     });
 </script>
