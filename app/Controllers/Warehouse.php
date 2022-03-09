@@ -22,6 +22,11 @@ class Warehouse extends BaseController
 		return view('transaction/stock-scan');
 	}
 
+	public function stock_scan_rm()
+	{
+		return view('transaction/stock-scan-rm');
+	}
+
 	public function scanproses()
 	{
 		$dataPost = $this->request->getPost();

@@ -40,18 +40,21 @@ $routes->get('/sales-detail-report', 'Sales::invoice_detail_report');
 $routes->get('/invoice-print', 'Sales::invoice');
 $routes->get('/shipment-report', 'Sales::shipment_report');
 $routes->get('/invoice-set/(:alpha)/(:num)', 'Sales::set_invoice/$1/$2');
-$routes->get('/planned-load', 'Sales::planned_load');
-$routes->get('/planned-load/(:any)', 'Sales::planned_load/$1');
+$routes->get('/planned-load', 'Logistic::planned_load');
+$routes->get('/planned-load/(:any)', 'Logistic::planned_load/$1');
 $routes->get('/inventory/(:alpha)', 'Inventory::stockbypart/$1');
 $routes->get('/inventory/(:alpha)/lot', 'Inventory::lotdetail/$1');
 $routes->get('/warehouse/(:segment)', 'Inventory::stockbywh/$1');
 $routes->get('/inventory', 'Inventory::index');
 $routes->get('/(:any)/inventory', 'Inventory::index/$1');
 $routes->get('/stock-opname', 'Accounting::stock_opname');
-$routes->get('/stock-scan', 'Warehouse::stock_scan');
+$routes->get('/sto-scan-fg', 'Warehouse::stock_scan');
+$routes->get('/sto-scan-rm', 'Warehouse::stock_scan_rm');
 $routes->get('/data-scan/(:any)', 'Warehouse::getdatascan/$1');
 $routes->get('/data-scan/(:any)/(:any)', 'Warehouse::getdatascan/$1/$2');
 $routes->get('/auth', 'Auth::index');
+$routes->get('/production/(:segment)', 'Production::index/$1');
+$routes->get('/delivery-order', 'Logistic::index');
 
 //post
 $routes->post('/invoice-print', 'Sales::print_invoice');

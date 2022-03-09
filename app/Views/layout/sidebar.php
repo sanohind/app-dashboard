@@ -85,7 +85,7 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="<?= site_url('stock-scan'); ?>" class="nav-link">
+              <a href="<?= site_url('sto-scan-fg'); ?>" class="nav-link">
                 <i class="far fa-circle nav-icon text-primary"></i>
                 <p>Scan Stock Opname</p>
               </a>
@@ -139,7 +139,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="<?= site_url('auth'); ?>" class="nav-link">
+              <a href="<?= site_url('shipment-report');?>" class="nav-link">
                 <i class="far fa-circle nav-icon text-primary"></i>
                 <p>Sales Report</p>
               </a>
