@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers;
+use Dompdf\Dompdf;
 
 class Sales extends BaseController
 {
@@ -52,7 +53,16 @@ class Sales extends BaseController
         $data['invoice'] = $invData->data;
         $data['invDetail'] = file_get_contents("http://10.1.10.101/api-display/public/invoice-detail/?type=$trans&invoice=$invoice");
         $data['shipment'] = $dataPost;
-        return view('transaction/invoice-print', $data);
+        //return view('transaction/invpdf', $data);
+        $filename = $dataPost['invNo'];
+
+        $pdf = new Dompdf();
+        //$content = file_get_contents(view('transaction/invpdf', $data));
+        $pdf->loadHtml(view('transaction/invpdf', $data));
+        $pdf->setPaper('A4','Potrait');
+        $pdf->render();
+
+        $pdf->stream($filename,array("Attachment"=>0));
     }
 
     public function invoice_report()

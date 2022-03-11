@@ -16,7 +16,8 @@
 		"fpdf/fpdf": "^1.83",
 		"twbs/bootstrap": "4.6.0",
 		"components/jquery": "^3.5",
-		"setasign/fpdf": "1.8"
+		"setasign/fpdf": "1.8",
+		"dompdf/dompdf": "^1.2"
 	},
 	"require-dev": {
 		"codeigniter4/codeigniter4-standard": "^1.0",

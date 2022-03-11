@@ -62,7 +62,7 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="<?= site_url('auth'); ?>" class="nav-link">
+              <a href="<?= site_url('invoice-print');?>" class="nav-link">
                 <i class="far fa-circle nav-icon text-primary"></i>
                 <p>Print Invoice Export</p>
               </a>
@@ -159,7 +159,7 @@
             <li class="nav-item">
               <a href="<?= site_url('shipment'); ?>" class="nav-link">
                 <i class="far fa-circle nav-icon text-primary"></i>
-                <p>Planned Load</p>
+                <p>Shipment Monitor</p>
               </a>
             </li>
           </ul>
