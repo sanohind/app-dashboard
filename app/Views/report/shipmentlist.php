@@ -61,6 +61,69 @@
             <div class="text-bold pt-2"> Loading...</div>
         </div>
         <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">Filter by :</h3>
+                        <br />
+                        <br />
+                        <form class="form-horizontal" method="GET" action="">
+                            <div class="form-group row">
+                                <label for="bpCode" class="col-sm-1 col-form-label text-right">Customer</label>
+                                <div class="col-sm-6">
+                                    <select class="form-control select2" id="bpCode" name="bpcode">
+                                        <option value="">-- Pilih --</option>
+                                        <?php
+                                        foreach ($customer as $cst) :
+                                        ?>
+                                            <option value="<?= $cst->bp_code ?>"><?= $cst->bp_name ?></option>
+                                        <?php
+                                        endforeach;
+                                        ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="period" class="col-sm-1 col-form-label text-right">Periode</label>
+                                <div class="col-sm-2">
+                                    <select class="form-control select2" id="periodyear" name="periodyear">
+                                        <option value="">-- Tahun --</option>
+                                        <?php
+                                        for ($y = 2020; $y <= date('Y');) :
+                                        ?>
+                                            <option value="<?= $y ?>"><?= $y ?></option>
+                                        <?php
+                                            $y++;
+                                        endfor;
+                                        ?>
+                                    </select>
+                                </div>
+                                <div class="col-sm-2">
+                                    <select class="form-control" name="periodMonth" id="periodMonth">
+                                        <option value="">-- Bulan --</option>
+                                        <option value="01">January</option>
+                                        <option value="02">February</option>
+                                        <option value="03">March</option>
+                                        <option value="04">April</option>
+                                        <option value="05">May</option>
+                                        <option value="06">June</option>
+                                        <option value="07">July</option>
+                                        <option value="08">August</option>
+                                        <option value="09">September</option>
+                                        <option value="10">October</option>
+                                        <option value="11">November</option>
+                                        <option value="12">December</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-2">
+                                    <button type="submit" name="submit" class="btn btn-sm btn-success form-control">Display</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+            </div>
             <div class="col-md-12">
                 <div class="card card-outline card-primary">
                     <div class="card-header">
@@ -78,7 +141,7 @@
                                         <th width="20%">Customer</th>
                                         <th width="15%">Reference</th>
                                         <th width="15%">Customer Order</th>
-                                        
+
                                         <th width="8%">Lead Time (days)</th>
                                         <th></th>
                                     </tr>
@@ -102,7 +165,7 @@
                                             <td><?= $shp->bp_name ?></td>
                                             <td><?= $shp->shpm_ref ?></td>
                                             <td><?= $shp->cst_order ?></td>
-                                            
+
                                             <td><?= $dif->format('%a'); ?></td>
                                             <td>
                                                 <?php
@@ -157,7 +220,7 @@
         .appendTo('#example thead');
 
     $("#tbSto").DataTable({
-        
+
         dom: 'Bfrtip',
         buttons: [{
             extend: 'excelHtml5',

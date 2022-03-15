@@ -53,7 +53,7 @@ $routes->get('/sto-scan-rm', 'Warehouse::stock_scan_rm');
 $routes->get('/data-scan/(:any)', 'Warehouse::getdatascan/$1');
 $routes->get('/data-scan/(:any)/(:any)', 'Warehouse::getdatascan/$1/$2');
 $routes->get('/auth', 'Auth::index');
-$routes->get('/production/(:segment)', 'Production::index/$1');
+$routes->get('/production/(:segment)/(:segment)', 'Production::index/$1/$2');
 $routes->get('/shipment', 'Logistic::index');
 
 //post
