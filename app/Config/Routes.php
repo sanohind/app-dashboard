@@ -55,6 +55,7 @@ $routes->get('/data-scan/(:any)/(:any)', 'Warehouse::getdatascan/$1/$2');
 $routes->get('/auth', 'Auth::index');
 $routes->get('/production/(:segment)/(:segment)', 'Production::index/$1/$2');
 $routes->get('/shipment', 'Logistic::index');
+$routes->get('/purchase', 'Purchase::index');
 
 //post
 $routes->post('/invoice-print', 'Sales::print_invoice');
