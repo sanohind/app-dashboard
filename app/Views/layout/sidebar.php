@@ -79,6 +79,29 @@
           <a href="#" class="nav-link">
             <i class="nav-icon fas fa-home text-primary"></i>
             <p>
+              Purchase
+              <i class="fas fa-angle-left right text-primary"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a href="<?= site_url('purchase'); ?>" class="nav-link">
+                <i class="far fa-circle nav-icon text-primary"></i>
+                <p>Dashboard</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+                <i class="far fa-circle nav-icon text-primary"></i>
+                <p> -- / --</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon fas fa-home text-primary"></i>
+            <p>
               Warehouse
               <i class="fas fa-angle-left right text-primary"></i>
             </p>
