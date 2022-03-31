@@ -278,9 +278,9 @@
                                                 <td><?= $shortage->old_partno ?></td>
                                                 <td><?= $shortage->description ?></td>
                                                 <td><?= $shortage->warehouse ?></td>
-                                                <td><?= $shortage->net_qty ?></td>
-                                                <td><?= $shortage->qty_actual ?></td>
-                                                <td><?= $shortage->shortage ?></td>
+                                                <td class="text-right"><?= number_format($shortage->net_qty) ?></td>
+                                                <td class="text-right"><?= number_format($shortage->qty_actual) ?></td>
+                                                <td class="text-right"><?= number_format($shortage->shortage) ?></td>
                                                 <td><?= $shortage->unit ?></td>
                                                 <td><?= $shortage->for_fg ?></td>
                                             </tr>
