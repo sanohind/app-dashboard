@@ -76,7 +76,12 @@
                                         <?php
                                         foreach ($customer as $cst) :
                                         ?>
-                                            <option value="<?= $cst->bp_code ?>"><?= $cst->bp_name ?></option>
+                                            <option value="<?= $cst->bp_code ?>" <?php
+                                                                                    if (isset($param)) {
+                                                                                        if ($cst->bp_code == $param['bp']) {
+                                                                                            echo "selected";
+                                                                                        }
+                                                                                    } ?>><?= $cst->bp_name ?></option>
                                         <?php
                                         endforeach;
                                         ?>
@@ -91,7 +96,12 @@
                                         <?php
                                         for ($y = 2020; $y <= date('Y');) :
                                         ?>
-                                            <option value="<?= $y ?>"><?= $y ?></option>
+                                            <option value="<?= $y ?>" <?php
+                                                                                    if (isset($param)) {
+                                                                                        if ($y == $param['year']) {
+                                                                                            echo "selected";
+                                                                                        }
+                                                                                    } ?>><?= $y ?></option>
                                         <?php
                                             $y++;
                                         endfor;
@@ -99,20 +109,32 @@
                                     </select>
                                 </div>
                                 <div class="col-sm-2">
-                                    <select class="form-control" name="periodMonth" id="periodMonth">
+                                    <select class="form-control" name="periodmonth" id="periodMonth">
                                         <option value="">-- Bulan --</option>
-                                        <option value="01">January</option>
-                                        <option value="02">February</option>
-                                        <option value="03">March</option>
-                                        <option value="04">April</option>
-                                        <option value="05">May</option>
-                                        <option value="06">June</option>
-                                        <option value="07">July</option>
-                                        <option value="08">August</option>
-                                        <option value="09">September</option>
-                                        <option value="10">October</option>
-                                        <option value="11">November</option>
-                                        <option value="12">December</option>
+                                        <option value="01" <?php if (isset($param)) { if ($param['month'] == '01') { echo "selected";}} ?>>January</option>
+                                        <option value="02" <?php if (isset($param)) { if ($param['month'] == '02') { echo "selected";}} ?>>February</option>
+                                        <option value="03" <?php if (isset($param)) { if ($param['month'] == '03') { echo "selected";}} ?>>March</option>
+                                        <option value="04" <?php if (isset($param)) { if ($param['month'] == '04') { echo "selected";}} ?>>April</option>
+                                        <option value="05" <?php if (isset($param)) { if ($param['month'] == '05') { echo "selected";}} ?>>May</option>
+                                        <option value="06" <?php if (isset($param)) { if ($param['month'] == '06') { echo "selected";}} ?>>June</option>
+                                        <option value="07" <?php if (isset($param)) { if ($param['month'] == '07') { echo "selected";}} ?>>July</option>
+                                        <option value="08" <?php if (isset($param)) { if ($param['month'] == '08') { echo "selected";}} ?>>August</option>
+                                        <option value="09" <?php if (isset($param)) { if ($param['month'] == '09') { echo "selected";}} ?>>September</option>
+                                        <option value="10" <?php if (isset($param)) { if ($param['month'] == '10') { echo "selected";}} ?>>October</option>
+                                        <option value="11" <?php if (isset($param)) { if ($param['month'] == '11') { echo "selected";}} ?>>November</option>
+                                        <option value="12" <?php if (isset($param)) { if ($param['month'] == '12') { echo "selected";}} ?>>December</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="period" class="col-sm-1 col-form-label text-right">Status</label>
+                                <div class="col-sm-2">
+                                    <select class="form-control" name="status" id="status">
+                                        <option value="">-- Status --</option>
+                                        <option value="5" <?php if (isset($param)) { if ($param['status'] == '5') { echo "selected";}} ?>>Free</option>
+                                        <option value="15" <?php if (isset($param)) { if ($param['status'] == '15') { echo "selected";}} ?>>Released</option>
+                                        <option value="20" <?php if (isset($param)) { if ($param['status'] == '20') { echo "selected";}} ?>>Invoiced</option>
+                                        <option value="25" <?php if (isset($param)) { if ($param['status'] == '25') { echo "selected";}} ?>>Processed</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-2">
@@ -157,7 +179,23 @@
                                             </td>
                                             <td>
                                                 <?php
-                                                if ($shp->status == 10) echo 'Approved';
+                                                switch ($shp->status) {
+                                                    case '5':
+                                                        $status = 'Free';
+                                                        break;
+                                                    case '15':
+                                                        $status = 'Released';
+                                                        break;
+                                                    case '20':
+                                                        $status = 'Invoiced';
+                                                        break;
+                                                    case '25':
+                                                        $status = 'Processed';
+                                                        break;
+                                                    default:
+                                                        $status = 'Approved';
+                                                }
+                                                echo $status;
                                                 ?>
                                             </td>
                                             <td><?= $shp->plan_dlv_date ?></td>
@@ -228,7 +266,9 @@
         order: [
             [7, "desc"]
         ],
-        "pageLength": 25,
+        scrollY: '500px',
+        scrollCollapse: true,
+        paging: false,
 
     });
 </script>
