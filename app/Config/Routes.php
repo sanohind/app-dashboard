@@ -55,7 +55,10 @@ $routes->get('/data-scan/(:any)/(:any)', 'Warehouse::getdatascan/$1/$2');
 $routes->get('/auth', 'Auth::index');
 $routes->get('/production/(:segment)/(:segment)', 'Production::index/$1/$2');
 $routes->get('/shipment', 'Logistic::index');
+$routes->get('/shipment/graph', 'Logistic::shipment_graph');
+$routes->get('/shipment/graph/export', 'Logistic::shipment_graph_export');
 $routes->get('/purchase', 'Purchase::index');
+$routes->get('billable', 'Sales::billable');
 
 //post
 $routes->post('/invoice-print', 'Sales::print_invoice');

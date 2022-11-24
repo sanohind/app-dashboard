@@ -98,4 +98,9 @@ class Sales extends BaseController
         $data['shipment'] = $shp->data;
         return view('report/planned-load',$data);
     }
+
+    public function billable()
+    {
+        return view('report/billable');
+    }
 }

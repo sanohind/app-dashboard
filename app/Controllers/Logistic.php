@@ -1,9 +1,12 @@
 <?php
 
 namespace App\Controllers;
+
 use Dompdf\Dompdf;
 
 use App\Controllers\BaseController;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 
 class Logistic extends BaseController
 {
@@ -64,5 +67,68 @@ class Logistic extends BaseController
         //$pdf->render();
 
         //$pdf->stream($filename,array("Attachment"=>0));
+    }
+
+    public function shipment_graph()
+    {
+
+        $getGraph = file_get_contents("http://localhost/slim-rest/public/shipment-graph/");
+
+        $grp = json_decode($getGraph);
+        $data['date'] = $grp->date;
+        $data['dtApproved'] = $grp->approved;
+        $data['dtReleased'] = $grp->released;
+        $data['dtInvoiced'] = $grp->invoiced;
+        $data['dtTotal'] = $grp->total;
+
+        return view('report/shp_graph', $data);
+    }
+
+    public function shipment_graph_export()
+    {
+        $getGraph = file_get_contents("http://localhost/slim-rest/public/shipment-graph/");
+
+        $grp = json_decode($getGraph);
+        $date = $grp->date;
+        $dtApr = $grp->approved;
+        $dtRls = $grp->released;
+        $dtInv = $grp->invoiced;
+        $dtTotal = $grp->total;
+
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->setActiveSheetIndex(0);
+
+        $sheet->setCellValue('A1', 'No')
+        ->setCellValue('B1', 'Tanggal')
+        ->setCellValue('C1', 'Total Shipment Approved')
+        ->setCellValue('D1', 'Total Shipment Released')
+        ->setCellValue('E1', 'Total Shipment Invoiced')
+        ->setCellValue('F1', 'Total Shipment');
+
+        $colNum = 2;
+        $no = 1;
+        $i = 0;
+        foreach ($date as $d) {
+            $sheet->setCellValue('A' . $colNum, $no);
+            $sheet->setCellValue('B' . $colNum, $d);
+            $sheet->setCellValue('C' . $colNum, $dtApr[$i]);
+            $sheet->setCellValue('D' . $colNum, $dtRls[$i]);
+            $sheet->setCellValue('E' . $colNum, $dtInv[$i]);
+            $sheet->setCellValue('F' . $colNum, $dtTotal[$i]);
+            $colNum++;
+            $no++;
+            $i++;
+        }
+        // tulis dalam format .xlsx
+        $writer = new Xlsx($spreadsheet);
+        $fileName = date('Y-m-d H:i:s').'_data_summary_shipment';
+
+        // Redirect hasil generate xlsx ke web client
+        ob_end_clean();
+        header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        header('Content-Disposition: attachment;filename=' . $fileName . '.xlsx');
+        header('Cache-Control: max-age=0');
+        $writer->save('php://output');
+        exit();
     }
 }
