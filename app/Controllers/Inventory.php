@@ -22,13 +22,15 @@ class Inventory extends BaseController
 		return view('inventory/invwh', $data);
 	}
 
-	public function monitor($divisi)
+	public function monitor($divisi = null)
 	{
 		if ($divisi == null) {
-			$data['divisi'] = 'All Division';
+			$data['divisi'] = 'All';
 		} else {
 			$data['divisi'] = $divisi;
 		}
-		return view('inventory/main', $data);
+		$data['year'] = date('Y');
+		$data['month'] = date('m');
+		return view('inventory/monitor', $data);
 	}
 }

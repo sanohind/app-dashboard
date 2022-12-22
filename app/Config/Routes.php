@@ -34,6 +34,8 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/board', 'Home::index');
 $routes->get('/board/(:any)', 'Home::index/$1');
+$routes->get('/stock-monitor', 'Inventory::monitor');
+$routes->get('/stock-monitor/(:any)', 'Inventory::monitor/$1');
 $routes->get('/receipt-report', 'Purchase::receipt');
 $routes->get('/sales-report', 'Sales::invoice_report');
 $routes->get('/sales-detail-report', 'Sales::invoice_detail_report');
