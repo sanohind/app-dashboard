@@ -161,7 +161,7 @@
 <script src="<?= base_url('assets/adminlte/plugin/datatables-buttons/js/dataTables.buttons.min.js') ?>"></script>
 <script src="<?= base_url('assets/adminlte/plugin/datatables-buttons/js/buttons.bootstrap4.min.js') ?>"></script>
 <!-- component -->
-<script src="<?= base_url('assets/js/component/main2-1.js') ?>"></script>
+<script src="<?= base_url('assets/js/component/main2.js') ?>"></script>
 <script>
     var minutes, seconds, count, counter, timer;
     count = 180; //seconds

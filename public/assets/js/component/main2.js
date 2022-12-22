@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  fetch(`${api_url}/stockbypart/?group=FG`, {
+  fetch(`http://10.1.10.101/api-display/public/stockbypart/?group=FG`, {
     mode: "no-cors",
   })
     .then((response) => {
