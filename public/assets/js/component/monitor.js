@@ -96,69 +96,69 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-// function showDetail(partno) {
-//   const dtTitle = document.getElementById("detailTitle");
-//   dtTitle.innerText = partno;
-//   $("#tableInventoryDetail").DataTable().destroy();
+function showDetail(partno) {
+  const dtTitle = document.getElementById("detailTitle");
+  dtTitle.innerText = partno;
+  $("#tableInventoryDetail").DataTable().destroy();
 
-//   fetch(`${api_url}/stockpartwh/?partno=${partno}`, {
-//     mode: "no-cors",
-//   })
-//     .then((response) => {
-//       if (response.ok) {
-//         return Promise.resolve(response);
-//       } else {
-//         return Promise.reject(new Error("Failed to load"));
-//       }
-//     })
-//     .then((response) => response.json()) // parse response as JSON
-//     .then((data) => {
-//       const result = data.data;
-//       const dtTable = $("#tableInventoryDetail").DataTable({
-//         responsive: true,
-//         autoWidth: false,
-//         data: result,
-//         columnDefs: [
-//           {
-//             targets: [1, 2, 3, 4],
-//             render: function (data, type, row, meta) {
-//               if (type === "display") {
-//                 data = new Intl.NumberFormat().format(data);
-//               }
-//               return data;
-//             },
-//           },
-//         ],
-//         columns: [
-//           {
-//             data: "warehouse",
-//           },
-//           {
-//             data: "onhand",
-//           },
-//           {
-//             data: "allocated",
-//           },
-//           {
-//             data: "onorder",
-//           },
-//           {
-//             data: "economicstock",
-//           },
-//         ],
-//         order: [[0, "asc"]],
-//       });
-//       $("#olTableDetail").remove();
-//     })
-//     .catch(function (error) {
-//       console.log(`Error: ${error.message}`);
-//       //alert(`Error: ${error.message}`);
-//       Swal.fire({
-//         icon: "error",
-//         title: "Oops...",
-//         text: `${error.message}. Please contact administrator!!`,
-//       });
-//     });
+  fetch(`${api_url}/stockpartwh/?partno=${partno}`, {
+    mode: "no-cors",
+  })
+    .then((response) => {
+      if (response.ok) {
+        return Promise.resolve(response);
+      } else {
+        return Promise.reject(new Error("Failed to load"));
+      }
+    })
+    .then((response) => response.json()) // parse response as JSON
+    .then((data) => {
+      const result = data.data;
+      const dtTable = $("#tableInventoryDetail").DataTable({
+        responsive: true,
+        autoWidth: false,
+        data: result,
+        columnDefs: [
+          {
+            targets: [1, 2, 3, 4],
+            render: function (data, type, row, meta) {
+              if (type === "display") {
+                data = new Intl.NumberFormat().format(data);
+              }
+              return data;
+            },
+          },
+        ],
+        columns: [
+          {
+            data: "warehouse",
+          },
+          {
+            data: "onhand",
+          },
+          {
+            data: "allocated",
+          },
+          {
+            data: "onorder",
+          },
+          {
+            data: "economicstock",
+          },
+        ],
+        order: [[0, "asc"]],
+      });
+      $("#olTableDetail").remove();
+    })
+    .catch(function (error) {
+      console.log(`Error: ${error.message}`);
+      //alert(`Error: ${error.message}`);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `${error.message}. Please contact administrator!!`,
+      });
+    });
 
-//   $("#modal-detail").modal("show");
-// }
+  $("#modal-detail").modal("show");
+}
