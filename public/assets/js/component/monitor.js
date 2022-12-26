@@ -80,7 +80,8 @@ document.addEventListener("DOMContentLoaded", function () {
         ],
         order: [
           [4, "desc"],
-          [3, "asc"]
+          [3, "asc"],
+          [5, "desc"]
         ],
       });
       $("#olTable").remove();
