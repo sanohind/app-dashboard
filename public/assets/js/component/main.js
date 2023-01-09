@@ -26,14 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
             targets: 0,
             render: function (data, type, row, meta) {
               if (type === "display") {
-                // data = `<a href="http://localhost/app/public/inventory/${encodeURIComponent(data.toLowerCase())}">${data}</a>`;
                 data = `<a href="#" onclick="showDetail('${data}')" data-id="${data}">${data}</a>`;
-                // data =
-                //   '<a href="http://localhost/app/public/inventory"' +
-                //   encodeURIComponent(data.trim()) +
-                //   '">' +
-                //   data +
-                //   "</a>";
               }
               return data;
             },
@@ -80,7 +73,6 @@ document.addEventListener("DOMContentLoaded", function () {
     })
     .catch(function (error) {
       console.log(`Error: ${error.message}`);
-      //alert(`Error: ${error.message}`);
       Swal.fire({
         icon: "error",
         title: "Oops...",
