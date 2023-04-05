@@ -43,13 +43,16 @@
               <div class="table-responsive">
                 <table class="table table-striped table-hover dt-body-right table-bordered" id="tableInventory">
                   <thead>
-                    <tr>
+                    <!-- <tr>
                       <th rowspan="2">Part No</th>
                       <th rowspan="2">Std. Old Part</th>
                       <th rowspan="2">Part Name</th>
                       <th colspan="5" class="align-middle text-center">Inventory Qty</th>
-                    </tr>
+                    </tr> -->
                     <tr>
+                      <th>Part No</th>
+                      <th>Std. Old Part</th>
+                      <th>Part Name</th>
                       <th class="text-right">On Hand</th>
                       <th class="text-right">Safety Stock</th>
                       <th class="text-right">Min. Stock</th>
