@@ -30,9 +30,9 @@ document.addEventListener("DOMContentLoaded", function () {
         buttons: ["csv", "excel"],
         responsive: true,
         autoWidth: false,
-        scrollY: '50vh',
-        scrollCollapse: true,
-        paging: false,
+        scrollY: "50vh",
+        scrollCollapse: true,
+        paging: false,
         data: result,
         columnDefs: [
           {
@@ -45,8 +45,8 @@ document.addEventListener("DOMContentLoaded", function () {
             },
           },
           {
-            targets: [3, 4, 5, 6],
-            className: 'dt-body-right',
+            targets: [3, 4, 5, 6, 7],
+            className: "dt-body-right",
             render: function (data, type, row, meta) {
               if (type === "display") {
                 data = new Intl.NumberFormat().format(data);
@@ -81,9 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
             data: "total_planned",
           },
         ],
-        order: [
-          [7, "desc"],
-        ],
+        order: [[7, "desc"]],
       });
       $("#olTable").remove();
     })
@@ -96,6 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
         text: `${error.message}. Please contact administrator!!`,
       });
     });
+  $("#olTable").remove();
 });
 
 function showDetail(partno) {
