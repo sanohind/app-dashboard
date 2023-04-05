@@ -47,7 +47,7 @@
                       <th rowspan="2">Part No</th>
                       <th rowspan="2">Std. Old Part</th>
                       <th rowspan="2">Part Name</th>
-                      <th colspan="4" class="align-middle text-center">Inventory Qty</th>
+                      <th colspan="5" class="align-middle text-center">Inventory Qty</th>
                     </tr>
                     <tr>
                       <th class="text-right">On Hand</th>
