@@ -87,8 +87,9 @@ document.addEventListener("DOMContentLoaded", function () {
         title: "Oops...",
         text: `${error.message}. Please contact administrator!!`,
       });
+      $("#olTable").remove();
     });
-  $("#olTable").remove();
+  
 });
 
 function showDetail(partno) {
