@@ -37,7 +37,7 @@
         <div class="col-lg-12">
           <div class="card card-primary card-outline">
             <div class="card-header">
-              <h2 class="text-primary">Stock Monitor <small id="gp"><?= strtoupper( $divisi ) ?></small><small> Division</small></h2>
+              <h2 class="text-primary">Stock Monitor <small id="gp"><?= strtoupper( $divisi ) ?></small><small> Area</small></h2>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -52,8 +52,9 @@
                     <tr>
                       <th class="text-right">On Hand</th>
                       <th class="text-right">Safety Stock</th>
-                      <th class="text-right">Total Production (Period : <?= $year." - ".$month ?>)</th>
-                      <th class="text-right">Total Delivery (Period : <?= $year." - ".$month ?>)</th>
+                      <th class="text-right">Min. Stock</th>
+                      <th class="text-right">Max. Stock</th>
+                      <th class="text-right">Plan Delivery</th>
                     </tr>
                   </thead>
                   <tbody>

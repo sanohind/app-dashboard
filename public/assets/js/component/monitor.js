@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
   } else {
     div = "FC";
   }
-  fetch(`${api_url}/stock-monitor/?year=2022&month=12&divisi=${div}`, {
+  fetch(`${api_url}/stock-monitor/?year=2023&month=4&wh=${div}`, {
     mode: "no-cors",
   })
     .then((response) => {
@@ -72,16 +72,17 @@ document.addEventListener("DOMContentLoaded", function () {
             data: "safety_stock",
           },
           {
-            data: "total_receipt",
+            data: "min_stock",
           },
           {
-            data: "total_issue",
+            data: "max_stock",
+          },
+          {
+            data: "total_planned",
           },
         ],
         order: [
-          [4, "desc"],
-          [3, "asc"],
-          [5, "desc"]
+          [7, "desc"],
         ],
       });
       $("#olTable").remove();
