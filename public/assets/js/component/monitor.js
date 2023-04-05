@@ -1,22 +1,16 @@
 document.addEventListener("DOMContentLoaded", function () {
   const gp = document.getElementById("gp").innerHTML;
-  var div = "";
+  var year = "2023";
+  var month = "4";
   console.log(gp);
-  if (gp == "all") {
-    div = "";
-  } else if (gp == "BRAZING") {
-    div = "FB";
-  } else if (gp == "NYLON") {
-    div = "FN";
-  } else {
-    div = "FC";
-  }
-  fetch(`${api_url}/stock-monitor/?year=2023&month=4&wh=${div}`, {
+
+  fetch(`${api_url}/stock-monitor/?year=${year}&month=${month}&wh=${gp}`, {
     mode: "no-cors",
   })
     .then((response) => {
       if (response.ok) {
         return Promise.resolve(response);
+        //console.log(response);
       } else {
         return Promise.reject(new Error("Failed to load"));
       }
@@ -81,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
             data: "total_planned",
           },
         ],
-        order: [[7, "desc"]],
+        //order: [[7, "desc"]],
       });
       $("#olTable").remove();
     })
