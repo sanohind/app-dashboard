@@ -75,7 +75,10 @@ document.addEventListener("DOMContentLoaded", function () {
             data: "total_planned",
           },
         ],
-        order: [[7, "desc"]],
+        order: [
+          [6, "asc"],
+          [7, "desc"]
+        ],
       });
       $("#olTable").remove();
     })
