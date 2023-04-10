@@ -37,7 +37,10 @@
         <div class="col-lg-12">
           <div class="card card-primary card-outline">
             <div class="card-header">
-              <h2 class="text-primary">Stock Monitor <small id="gp"><?= strtoupper( $divisi ) ?></small><small> Area</small></h2>
+              <h2 class="text-primary">Stock Monitor <small id="gp"><?= strtoupper($divisi) ?></small><small> Area</small></h2>
+              <div class="card-tools">
+                <span id="timer"></span>
+              </div>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -82,7 +85,7 @@
               </button>
             </div>
             <div class="modal-body">
-            <div class="table-responsive">
+              <div class="table-responsive">
                 <table class="table table-striped table-hover dt-body-right" id="tableInventoryDetail">
                   <thead>
                     <tr>
