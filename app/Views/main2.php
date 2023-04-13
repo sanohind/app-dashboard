@@ -66,7 +66,7 @@
                     <div class="card">
                         <div class="card-header border-1">
                             <h3 class="card-title">Inventory Status</h3>
-                            <div class="card-tools">
+                            <div class="card-tools text-primary">
                                 <a href="<?= site_url("$gp/inventory/") ?>" class="btn btn-tool btn-sm text-success"> Details
                                     <i class="fas fa-sign-out-alt"></i>
                                 </a>
@@ -164,7 +164,7 @@
 <script src="<?= base_url('assets/js/component/main2.js') ?>"></script>
 <script>
     var minutes, seconds, count, counter, timer;
-    count = 180; //seconds
+    count = 600; //seconds
     counter = setInterval(timer, 1000);
 
     function checklength(i) {
