@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     var minutes, seconds, count, counter, timer;
-    count = 300; //seconds
+    count = 1200; //seconds
     counter = setInterval(timer, 1000);
 
     function checklength(i) {

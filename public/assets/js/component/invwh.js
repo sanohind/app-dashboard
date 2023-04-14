@@ -153,6 +153,5 @@ function showDetail(partno) {
         text: `${error.message}. Please contact administrator!!`,
       });
     });
-
   $("#modal-detail").modal("show");
 }
