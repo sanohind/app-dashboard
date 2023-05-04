@@ -76,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function () {
           },
         ],
         order: [
-          [6, "asc"]
+          [7, "asc"]
         ],
       });
       $("#olTable").remove();
